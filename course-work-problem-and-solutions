@@ -1,0 +1,40 @@
+### Call Them All
+
+Write a function `callThemAll`, that, given an object and a value, calls every
+method in the object, passing in the value as the argument with each call.
+
+`callThemAll` should return an array with all of the returned values from each
+method invocation. The order of the elements in the returned array does not
+matter.
+
+### solution
+
+let addsNums = {
+    addTen: function(num) {
+      return num + 10;
+    },
+  
+    addTwenty: function(num) {
+      return num + 20;
+    },
+  
+    someProperty: 'value'
+  };
+  
+const callThemAll = (anObj, value) => {
+    debugger;
+    let returnedValues = [];
+
+    for (let key in anObj) {    
+        currentValue = anObj[key];
+         if (typeof currentValue === 'function') {
+             let result = currentValue(value);
+
+             returnedValues.push(result);
+         }
+    }
+
+    return returnedValues;
+}
+
+console.log(callThemAll(addsNums, 100));
